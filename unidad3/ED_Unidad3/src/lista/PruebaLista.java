@@ -18,6 +18,6 @@ public class PruebaLista {
         for (Integer numero : numeros) {
             System.out.println(numero);
         }
-        
+        Math.mi
     }
 }

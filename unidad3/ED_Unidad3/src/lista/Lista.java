@@ -25,6 +25,8 @@ public class Lista<T> extends TDALista<T> implements Iterable<T> {
             ultimo.siguiente = nuevoNodo; // El último actual apunta al nuevo
             ultimo = nuevoNodo;           // El nuevo nodo ahora es el último oficial
         }
+        
+        indice++;
 
     }
 
@@ -41,7 +43,7 @@ public class Lista<T> extends TDALista<T> implements Iterable<T> {
         if (primero == null) {
             ultimo = null;
         }
-
+        indice--;
         return datoRetornado;
 
     }
@@ -80,6 +82,52 @@ public class Lista<T> extends TDALista<T> implements Iterable<T> {
 
     @Override
     public int tamanio() {
+        return indice;
+    }
+
+    @Override
+    public T eliminar(int index) {
+        
+        if(indice<=index){
+        throw new IndexOutOfBoundsException("El indice  "+ index +" no existe " );
+        }
+        if(index==0){
+            try{    
+        return quitar();
+            }catch(Exception e){
+            //return null;
+            }
+        }
+        Nodo actual = primero;
+        for (int i = 0; i < index-1; i++) {
+            actual=actual.siguiente;
+        }  
+        T dato = (T) actual.siguiente.dato;
+        actual.siguiente=actual.siguiente.siguiente;
+        return dato;
+    }
+    @Override
+    public boolean eliminar(T objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int ubicacionDe(T objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void agregar(T objeto, int index) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void reemplazar(T objeto, int index) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void obtener(int index) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
